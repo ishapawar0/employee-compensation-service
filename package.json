@@ -1,0 +1,13 @@
+{
+  "name": "employee-compensation-service",
+  "version": "1.0.0",
+  "description": "HTTP-triggered Azure Functions for employee records and bonus reporting, backed by SQL Server.",
+  "main": "src/functions/*.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "mssql": "^11.0.0"
+  }
+}

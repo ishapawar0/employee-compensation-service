@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "",
+    "SQL_CONNECTION_STRING": "Server=localhost,1433;Database=EmployeeCompensation;User Id=<user>;Password=<password>;Encrypt=true;TrustServerCertificate=true"
+  }
+}
