@@ -20,7 +20,7 @@ CREATE TABLE dbo.Employee (
     LastName     VARCHAR(50)       NOT NULL,
     DepartmentID INT               NULL,
     Salary       DECIMAL(12,2)     NOT NULL,
-    Bonus        DECIMAL(12,2)     NULL,      -- NULL = no bonus
+    Bonus        DECIMAL(12,2)     NULL,      
     HireDate     DATE              NULL,
     CONSTRAINT PK_Employee PRIMARY KEY (EmployeeID),
     CONSTRAINT FK_Employee_Department FOREIGN KEY (DepartmentID) REFERENCES dbo.Department (DepartmentID)

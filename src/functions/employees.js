@@ -5,8 +5,6 @@ const { HttpError, jsonResponse, withErrorHandling, parseId } = require('../http
 const MAX_MONEY = 9999999999.99; // largest value DECIMAL(12,2) can hold
 const FOREIGN_KEY_VIOLATION = 547; // SQL Server error number
 
-// ---------- Validation ----------
-
 function validateName(value, field) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new HttpError(400, `${field} is required and must be a non-empty string.`);
@@ -52,8 +50,6 @@ function validateHireDate(value) {
     return value;
 }
 
-// Reads and validates the body used by both create (POST) and update (PUT).
-// Bonus, departmentId and hireDate are nullable: omitting them or sending null stores NULL.
 async function readEmployeeBody(request) {
     let body;
     try {
@@ -100,7 +96,6 @@ async function writeEmployee(text, params, departmentId) {
     }
 }
 
-// ---------- Handlers ----------
 
 async function createEmployee(request) {
     const employee = await readEmployeeBody(request);
@@ -142,7 +137,7 @@ async function listEmployees(request) {
     return jsonResponse(200, result.recordset);
 }
 
-// Full replacement: every field is taken from the body, so omitting bonus (or sending null) clears it.
+
 async function updateEmployee(request) {
     const id = parseId(request.params.id, 'id');
     const employee = await readEmployeeBody(request);
@@ -178,8 +173,6 @@ async function deleteEmployee(request) {
     }
     return { status: 204 };
 }
-
-// ---------- Registration ----------
 
 app.http('createEmployee', { methods: ['POST'], route: 'employees', authLevel: 'function', handler: withErrorHandling(createEmployee) });
 app.http('listEmployees', { methods: ['GET'], route: 'employees', authLevel: 'function', handler: withErrorHandling(listEmployees) });
